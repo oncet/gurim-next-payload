@@ -9,8 +9,9 @@ import { fileURLToPath } from "url";
 
 import { Posts } from "@/collections/Posts";
 import { Media } from "./collections/Media";
-import { Users } from "./collections/Users";
 import { Menus } from "./collections/Menus";
+import { Tags } from "./collections/Tags";
+import { Users } from "./collections/Users";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -22,7 +23,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Posts, Menus],
+  collections: [Users, Media, Posts, Menus, Tags],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
       ...defaultFeatures,

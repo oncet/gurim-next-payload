@@ -15,6 +15,7 @@ export interface Config {
     media: Media;
     posts: Post;
     menus: Menu;
+    tags: Tag;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -25,6 +26,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     menus: MenusSelect<false> | MenusSelect<true>;
+    tags: TagsSelect<false> | TagsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -120,6 +122,17 @@ export interface Post {
     [k: string]: unknown;
   };
   highlightImage?: (number | null) | Media;
+  tags?: (number | Tag)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tags".
+ */
+export interface Tag {
+  id: number;
+  value: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -159,6 +172,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'menus';
         value: number | Menu;
+      } | null)
+    | ({
+        relationTo: 'tags';
+        value: number | Tag;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -243,6 +260,7 @@ export interface PostsSelect<T extends boolean = true> {
   title?: T;
   body?: T;
   highlightImage?: T;
+  tags?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -258,6 +276,15 @@ export interface MenusSelect<T extends boolean = true> {
         item?: T;
         item2?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tags_select".
+ */
+export interface TagsSelect<T extends boolean = true> {
+  value?: T;
   updatedAt?: T;
   createdAt?: T;
 }

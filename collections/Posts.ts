@@ -22,5 +22,11 @@ export const Posts: CollectionConfig = {
       type: "upload",
       relationTo: "media",
     },
+    {
+      name: "tags",
+      type: "relationship",
+      relationTo: "tags",
+      hasMany: true,
+    },
   ],
 };
