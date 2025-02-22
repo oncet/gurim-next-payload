@@ -23,9 +23,9 @@ export const Posts: CollectionConfig = {
       relationTo: "media",
     },
     {
-      name: "tags",
+      name: "categories",
       type: "relationship",
-      relationTo: "tags",
+      relationTo: "categories",
       hasMany: true,
     },
   ],

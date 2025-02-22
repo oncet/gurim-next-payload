@@ -65,9 +65,11 @@ export default async function Posts({
     <>
       <h1>{post.title}!!!</h1>
       <ul>
-        {post.tags
-          ?.flatMap((tag) => (typeof tag !== "number" ? [tag] : []))
-          .map((tag) => <li key={tag.id}>{tag.value}</li>)}
+        {post.categories
+          ?.flatMap((category) =>
+            typeof category !== "number" ? [category] : []
+          )
+          .map((category) => <li key={category.id}>{category.label}</li>)}
       </ul>
       <MyComponent data={post.body} />
     </>

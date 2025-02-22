@@ -15,7 +15,7 @@ export interface Config {
     media: Media;
     posts: Post;
     menus: Menu;
-    tags: Tag;
+    categories: Category;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -26,7 +26,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     menus: MenusSelect<false> | MenusSelect<true>;
-    tags: TagsSelect<false> | TagsSelect<true>;
+    categories: CategoriesSelect<false> | CategoriesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -122,17 +122,18 @@ export interface Post {
     [k: string]: unknown;
   };
   highlightImage?: (number | null) | Media;
-  tags?: (number | Tag)[] | null;
+  categories?: (number | Category)[] | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tags".
+ * via the `definition` "categories".
  */
-export interface Tag {
+export interface Category {
   id: number;
-  value: string;
+  label: string;
+  slug: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -174,8 +175,8 @@ export interface PayloadLockedDocument {
         value: number | Menu;
       } | null)
     | ({
-        relationTo: 'tags';
-        value: number | Tag;
+        relationTo: 'categories';
+        value: number | Category;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -260,7 +261,7 @@ export interface PostsSelect<T extends boolean = true> {
   title?: T;
   body?: T;
   highlightImage?: T;
-  tags?: T;
+  categories?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -281,10 +282,11 @@ export interface MenusSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tags_select".
+ * via the `definition` "categories_select".
  */
-export interface TagsSelect<T extends boolean = true> {
-  value?: T;
+export interface CategoriesSelect<T extends boolean = true> {
+  label?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }

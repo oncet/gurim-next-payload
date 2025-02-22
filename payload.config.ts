@@ -8,9 +8,9 @@ import sharp from "sharp";
 import { fileURLToPath } from "url";
 
 import { Posts } from "@/collections/Posts";
+import { Categories } from "./collections/Categories";
 import { Media } from "./collections/Media";
 import { Menus } from "./collections/Menus";
-import { Tags } from "./collections/Tags";
 import { Users } from "./collections/Users";
 
 const filename = fileURLToPath(import.meta.url);
@@ -23,7 +23,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Posts, Menus, Tags],
+  collections: [Users, Media, Posts, Menus, Categories],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
       ...defaultFeatures,
