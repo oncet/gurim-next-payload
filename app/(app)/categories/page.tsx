@@ -11,7 +11,7 @@ export default async function Categories() {
 
   return (
     <>
-      <h1>Categories!!!</h1>
+      <h1 className="bg-gurim-yellow-50">Categories!!!</h1>
       <ul>
         {categories.docs.map((category) => (
           <li key={category.id}>{category.label}</li>

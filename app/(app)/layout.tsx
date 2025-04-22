@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Image from "next/image";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,7 +28,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="border-4 border-pink-500 min-h-dvh flex flex-col">
+          <header className="border">
+            <Image src="/logo-2.webp" alt="logo" width={90} height={113} />
+          </header>
+          <main className="border flex-grow">{children}</main>
+          <footer className="border">Footer</footer>
+        </div>
       </body>
     </html>
   );

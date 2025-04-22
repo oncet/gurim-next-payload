@@ -10,12 +10,15 @@ export default async function Home() {
   });
 
   return (
-    <ul>
-      {posts.docs.map((post) => (
-        <li key={post.id}>
-          <Link href={`/post/${post.id}`}>{post.title}</Link>
-        </li>
-      ))}
-    </ul>
+    <>
+      <Link href="/categories">Categories</Link>
+      <ul>
+        {posts.docs.map((post) => (
+          <li key={post.id}>
+            <Link href={`/post/${post.id}`}>{post.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
