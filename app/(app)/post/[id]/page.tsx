@@ -43,7 +43,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
   },
 });
 
-export const MyComponent = ({ data }: { data: SerializedEditorState }) => {
+const MyComponent = ({ data }: { data: SerializedEditorState }) => {
   return <RichText data={data} converters={jsxConverters} />;
 };
 
